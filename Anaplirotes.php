@@ -69,9 +69,47 @@ if ($_POST["submit"]) {
 
 	 	 	if ($answer->num_rows > 0) {
 	 	 	    // output data of each row
-	 	 	     $result='<div class="alert alert-success"> <br>';
+	 	 	    // $result='<div class="alert alert-success"> <br>';
+	 	 	    $result='	 	 	     
+	 	 	     <div class="container">
+	 	 	       <h2>Condensed Table</h2>
+	 	 	       <p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p>            
+	 	 	       <table class="table table-condensed table-bordered table-hover ">
+	 	 	         <thead>
+	 	 	           <tr>
+	 	 	             <th>Επώνυμο</th>
+	 	 	             <th>Όνομα</th>
+	 	 	             <th>Πατρώνυμο</th>
+	 	 	             <th>ΑΦΜ</th>
+	 	 	             <th>Τηλέφωνο</th>
+	 	 	             <th>Ειδικότητα</th>
+	 	 	           </tr>
+	 	 	         </thead>
+	 	 	         
+	 	 	         ';
+	 	 	         
 	 	 	    while($row = $answer->fetch_assoc()) {
-	 	 	        $result=$result."Επώνυμο " . $row["Surname"]. " - Όνομα: " . $row["Νame"]. " - Πατρώνυμο: " . $row["Father"]. " - ΑΦΜ: " . $row["afm"]. " - Τηλέφωνο: " . $row["Phone"]. " - Ειδικότητα: " . $row["Eidikotita"]. " - Ημερομηνία Έναρξης: " . $row["StartDate"].  " - Έργο: " . $row["Praksi"]. " - Σχολεία Τοποθέτησης: " . $row["Schools"]. " - Υπουργική Απόφαση: " . $row["ypoyrgiki"]. "<br>";
+	 	 	    	$result=$result.'<tbody>
+	 	 	           <tr>
+	 	 	             <td>John</td>
+	 	 	             <td>Doe</td>
+	 	 	             <td>john@example.com</td>
+	 	 	           </tr>
+	 	 	           <tr>
+	 	 	             <td>Mary</td>
+	 	 	             <td>Moe</td>
+	 	 	             <td>mary@example.com</td>
+	 	 	           </tr>
+	 	 	           <tr>
+	 	 	             <td>July</td>
+	 	 	             <td>Dooley</td>
+	 	 	             <td>july@example.com</td>
+	 	 	           </tr>
+	 	 	         </tbody>
+	 	 	       </table>
+	 	 	     </div>';
+
+	 	 	      //  $result=$result."Επώνυμο " . $row["Surname"]. " - Όνομα: " . $row["Name"]. " - Πατρώνυμο: " . $row["Father"]. " - ΑΦΜ: " . $row["afm"]. " - Τηλέφωνο: " . $row["Phone"]. " - Ειδικότητα: " . $row["Eidikotita"]. " - Ημερομηνία Έναρξης: " . $row["StartDate"].  " - Έργο: " . $row["Praksi"]. " - Σχολεία Τοποθέτησης: " . $row["Schools"]. " - Υπουργική Απόφαση: " . $row["ypoyrgiki"]. "<br>";
 	 	 	    }
 	 	 	} else {
 	 	 	    $result='<div class="alert alert-danger"><strong> H/O <strong>'.grstrtoupper($_POST['surname']).'  με ΑΦΜ:' .$_POST['afm'].' δεν υπάρχει στην Βάση των Αναπληρωτών Εκπαιδευτικών </div>';
@@ -164,8 +202,10 @@ if ($_POST["submit"]) {
       <br>
       <input type="submit" name="submit" class="btn btn-success btn-lg" value="Υποβολή"" />
 
-     </div>
 <?php echo $result; ?>
+
+     </div>
+
     
    </form>
 
